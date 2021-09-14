@@ -1,0 +1,90 @@
+﻿@page
+@model FormWeb.Pages.Pessoas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].cep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].nacionalidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pessoa[0].logradouro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pessoa) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nacionalidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logradouro)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

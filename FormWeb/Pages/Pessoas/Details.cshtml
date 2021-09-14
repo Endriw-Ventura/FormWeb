@@ -1,0 +1,79 @@
+﻿@page
+@model FormWeb.Pages.Pessoas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pessoa</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.sobrenome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.sobrenome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.cpf)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.cpf)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.cep)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.cep)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.nacionalidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.nacionalidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.estado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.cidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.cidade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.telefone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.telefone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pessoa.logradouro)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.logradouro)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pessoa.id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
