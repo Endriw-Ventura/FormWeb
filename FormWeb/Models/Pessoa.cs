@@ -10,15 +10,26 @@ namespace FormWeb.Models
     {
         [Key]
         public int id { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string nome { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string sobrenome { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string cpf { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string cep { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string nacionalidade { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string estado { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string cidade { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string email { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string telefone { get; set; }
+        [Required(ErrorMessage = "Favor Preencher todos os campos")]
         public string logradouro { get; set; }
+
     }
 }

@@ -2,12 +2,12 @@
 @model FormWeb.Pages.Pessoas.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar novo cadastro";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
-<h4>Pessoa</h4>
+<h4>Cadastro</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -64,14 +64,14 @@
                 <span asp-validation-for="Pessoa.logradouro" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index"> Voltar para a lista </a>
 </div>
 
 @section Scripts {
