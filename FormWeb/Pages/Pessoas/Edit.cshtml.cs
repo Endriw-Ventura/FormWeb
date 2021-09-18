@@ -30,7 +30,7 @@ namespace FormWeb.Pages.Pessoas
                 return NotFound();
             }
 
-            Pessoa = await _context.Pessoa.FirstOrDefaultAsync(m => m.id == id);
+            Pessoa = await _context.Pessoa.FirstOrDefaultAsync(m => m.idPessoa == id);
 
             if (Pessoa == null)
             {
@@ -48,6 +48,21 @@ namespace FormWeb.Pages.Pessoas
                 return Page();
             }
 
+            int idPais = int.Parse(Request.Form["listaNacionalidades"]);
+            int idEstado = int.Parse(Request.Form["listaEstados"]);
+            int idCidade = int.Parse(Request.Form["listaCidades"]);
+
+            Cidade cidade = ReturnCidade(idCidade);
+            Estado estado = ReturnEstado(idEstado);
+            Nacionalidade pais = ReturnNacionalidade(idPais);
+
+            Pessoa.cidade = cidade;
+            Pessoa.IdCidade = cidade.IdCidade;
+            Pessoa.estado = estado;
+            Pessoa.IdEstado = estado.IdEstado;
+            Pessoa.nacionalidade = pais;
+            Pessoa.IdNacionalidade = pais.IdPais;
+
             _context.Attach(Pessoa).State = EntityState.Modified;
 
             try
@@ -56,7 +71,7 @@ namespace FormWeb.Pages.Pessoas
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PessoaExists(Pessoa.id))
+                if (!PessoaExists(Pessoa.idPessoa))
                 {
                     return NotFound();
                 }
@@ -71,7 +86,69 @@ namespace FormWeb.Pages.Pessoas
 
         private bool PessoaExists(int id)
         {
-            return _context.Pessoa.Any(e => e.id == id);
+            return _context.Pessoa.Any(e => e.idPessoa == id);
+        }
+
+        public IEnumerable<SelectListItem> ListaPaises()
+        {
+
+            List<SelectListItem> listaView = new List<SelectListItem>();
+            List<Nacionalidade> listaPaises = _context.Nacionalidade.ToList();
+            foreach (Nacionalidade pais in listaPaises)
+            {
+
+                listaView.Add(new SelectListItem() { Text = pais.Name, Value = pais.IdPais.ToString() });
+
+            }
+            return listaView;
+        }
+
+        public IEnumerable<SelectListItem> ListaEstados()
+        {
+
+            List<SelectListItem> listaView = new List<SelectListItem>();
+            List<Estado> listaEstados = _context.Estado.OrderBy(e => e.Name).ToList();
+            foreach (Estado estado in listaEstados)
+            {
+
+                listaView.Add(new SelectListItem() { Text = estado.Name, Value = estado.IdEstado.ToString() });
+
+            }
+            return listaView;
+        }
+
+        public IEnumerable<SelectListItem> ListaCidades()
+        {
+
+            List<SelectListItem> listaView = new List<SelectListItem>();
+            List<Cidade> listaCidades = _context.Cidade.OrderBy(e => e.Name).ToList();
+            foreach (Cidade cidade in listaCidades)
+            {
+
+                listaView.Add(new SelectListItem() { Text = cidade.Name, Value = cidade.IdCidade.ToString() });
+
+            }
+            return listaView;
+        }
+
+        public Estado ReturnEstado(int id)
+        {
+            Estado estado = _context.Estado.Find(id);
+            return estado;
+        }
+
+        public Nacionalidade ReturnNacionalidade(int id)
+        {
+            Nacionalidade pais = _context.Nacionalidade.Find(id);
+            return pais;
+        }
+
+        public Cidade ReturnCidade(int id)
+        {
+            Cidade cidade = _context.Cidade.Find(id);
+            return cidade;
         }
     }
+
 }
+

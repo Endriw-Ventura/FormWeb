@@ -3,14 +3,16 @@ using FormWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormWeb.Migrations
 {
     [DbContext(typeof(FormWebContext))]
-    partial class FormWebContextModelSnapshot : ModelSnapshot
+    [Migration("20210918175714_FKs")]
+    partial class FKs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -16,5 +16,8 @@ namespace FormWeb.Data
         }
 
         public DbSet<FormWeb.Models.Pessoa> Pessoa { get; set; }
+        public DbSet<FormWeb.Models.Nacionalidade> Nacionalidade { get; set; }
+        public DbSet<FormWeb.Models.Estado> Estado { get; set; }
+        public DbSet<FormWeb.Models.Cidade> Cidade { get; set; }
     }
 }

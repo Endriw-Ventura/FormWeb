@@ -21,7 +21,6 @@ namespace FormWeb.Pages.Pessoas
 
         [BindProperty]
         public Pessoa Pessoa { get; set; }
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -29,7 +28,15 @@ namespace FormWeb.Pages.Pessoas
                 return NotFound();
             }
 
-            Pessoa = await _context.Pessoa.FirstOrDefaultAsync(m => m.id == id);
+            Pessoa = await _context.Pessoa.FirstOrDefaultAsync(m => m.idPessoa == id);
+
+            Cidade cidade = ReturnCidade(Pessoa.IdCidade);
+            Estado estado = ReturnEstado(Pessoa.IdEstado);
+            Nacionalidade pais = ReturnNacionalidade(Pessoa.IdNacionalidade);
+
+            Pessoa.estado = estado;
+            Pessoa.cidade = cidade;
+            Pessoa.nacionalidade = pais;
 
             if (Pessoa == null)
             {
@@ -54,6 +61,24 @@ namespace FormWeb.Pages.Pessoas
             }
 
             return RedirectToPage("./Index");
+        }
+
+        public Estado ReturnEstado(int id)
+        {
+            Estado estado = _context.Estado.Find(id);
+            return estado;
+        }
+
+        public Nacionalidade ReturnNacionalidade(int id)
+        {
+            Nacionalidade pais = _context.Nacionalidade.Find(id);
+            return pais;
+        }
+
+        public Cidade ReturnCidade(int id)
+        {
+            Cidade cidade = _context.Cidade.Find(id);
+            return cidade;
         }
     }
 }

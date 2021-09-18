@@ -13,54 +13,54 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Pessoa.id" />
+            <input type="hidden" asp-for="Pessoa.idPessoa" />
             <div class="form-group">
-                <label asp-for="Pessoa.nome" class="control-label"></label>
+                <label asp-for="Pessoa.nome" class="control-label">Nome</label>
                 <input asp-for="Pessoa.nome" class="form-control" />
                 <span asp-validation-for="Pessoa.nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pessoa.sobrenome" class="control-label"></label>
+                <label asp-for="Pessoa.sobrenome" class="control-label">Sobrenome</label>
                 <input asp-for="Pessoa.sobrenome" class="form-control" />
                 <span asp-validation-for="Pessoa.sobrenome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pessoa.cpf" class="control-label"></label>
+                <label asp-for="Pessoa.cpf" class="control-label">CPF</label>
                 <input asp-for="Pessoa.cpf" class="form-control" />
                 <span asp-validation-for="Pessoa.cpf" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pessoa.cep" class="control-label"></label>
-                <input asp-for="Pessoa.cep" class="form-control" />
-                <span asp-validation-for="Pessoa.cep" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoa.nacionalidade" class="control-label"></label>
-                <input asp-for="Pessoa.nacionalidade" class="form-control" />
-                <span asp-validation-for="Pessoa.nacionalidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoa.estado" class="control-label"></label>
-                <input asp-for="Pessoa.estado" class="form-control" />
-                <span asp-validation-for="Pessoa.estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoa.cidade" class="control-label"></label>
-                <input asp-for="Pessoa.cidade" class="form-control" />
-                <span asp-validation-for="Pessoa.cidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoa.email" class="control-label"></label>
-                <input asp-for="Pessoa.email" class="form-control" />
-                <span asp-validation-for="Pessoa.email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoa.telefone" class="control-label"></label>
+                <label asp-for="Pessoa.telefone" class="control-label">Telefone</label>
                 <input asp-for="Pessoa.telefone" class="form-control" />
                 <span asp-validation-for="Pessoa.telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pessoa.logradouro" class="control-label"></label>
+                <label asp-for="Pessoa.email" class="control-label">Email</label>
+                <input asp-for="Pessoa.email" class="form-control" />
+                <span asp-validation-for="Pessoa.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.cep" class="control-label">CEP</label>
+                <input asp-for="Pessoa.cep" class="form-control" />
+                <span asp-validation-for="Pessoa.cep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.nacionalidade" class="control-label">Nacionalidade</label>
+                <select asp-for="Pessoa.nacionalidade" class="form-control" asp-items="Model.ListaPaises()" name="listaNacionalidades"></select>
+                <span asp-validation-for="Pessoa.nacionalidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.estado" class="control-label">Estado</label>
+                <select asp-for="Pessoa.estado" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
+                <span asp-validation-for="Pessoa.estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.cidade" class="control-label">Cidade</label>
+                <select asp-for="Pessoa.cidade" class="form-control" asp-items="Model.ListaCidades()" name="listaCidades"></select>
+                <span asp-validation-for="Pessoa.cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.logradouro" class="control-label">Logradouro</label>
                 <input asp-for="Pessoa.logradouro" class="form-control" />
                 <span asp-validation-for="Pessoa.logradouro" class="text-danger"></span>
             </div>
@@ -72,7 +72,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">> Voltar para a lista <</a>
+    <a asp-page="./Index"> Voltar para a lista </a>
 </div>
 
 @section Scripts {

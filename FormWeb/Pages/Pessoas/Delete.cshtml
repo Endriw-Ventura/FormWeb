@@ -1,6 +1,6 @@
 ﻿@page
 @model FormWeb.Pages.Pessoas.DeleteModel
-
+@using Models
 @{
     ViewData["Title"] = "Excluir cadastro";
 }
@@ -13,61 +13,61 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.nome)
+            @Html.DisplayName("Nome")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pessoa.nome)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.sobrenome)
+            @Html.DisplayName("Sobrenome")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pessoa.sobrenome)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.cpf)
+            @Html.DisplayName("CPF")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pessoa.cpf)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.cep)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Pessoa.cep)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.nacionalidade)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Pessoa.nacionalidade)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Pessoa.estado)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.cidade)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Pessoa.cidade)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Pessoa.email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.telefone)
+            @Html.DisplayName("Telefone")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pessoa.telefone)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Pessoa.logradouro)
+            @Html.DisplayName("Email")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("CEP")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.cep)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("Nacionalidade")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.nacionalidade.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("Estado")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.estado.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("Cidade")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pessoa.cidade.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("Logradouro")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pessoa.logradouro)
@@ -75,7 +75,7 @@
     </dl>
     
     <form method="post">
-        <input type="hidden" asp-for="Pessoa.id" />
+        <input type="hidden" asp-for="Pessoa.idPessoa" />
         <input type="submit" value="Deletar" class="btn btn-danger" />
         <a asp-page="./Index"> Voltar para a lista </a>
     </form>

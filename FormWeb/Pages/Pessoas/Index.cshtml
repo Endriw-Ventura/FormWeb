@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Pessoa[0].nome)
+                @Html.DisplayName("Nome")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pessoa[0].sobrenome)
+                @Html.DisplayName("Sobrenome")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pessoa[0].cpf)
+                @Html.DisplayName("CPF")
             </th>
             <th></th>
         </tr>
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.cpf)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.id">Editar</a> |
-                <a asp-page="./Details" asp-route-id="@item.id">Detalhes</a> |
-                <a asp-page="./Delete" asp-route-id="@item.id">Excluir</a>
+                <a asp-page="./Edit" asp-route-id="@item.idPessoa">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.idPessoa">Detalhes</a> |
+                <a asp-page="./Delete" asp-route-id="@item.idPessoa">Excluir</a>
             </td>
         </tr>
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,26 +10,36 @@ namespace FormWeb.Models
     public class Pessoa
     {
         [Key]
-        public int id { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+        public int idPessoa { get; set; }
+        
         public string nome { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+    
         public string sobrenome { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+        [DisplayFormat]
         public string cpf { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+        [DisplayFormat]
         public string cep { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
-        public string nacionalidade { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
-        public string estado { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
-        public string cidade { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+        public int IdNacionalidade { get; set; }
+        
+        public int IdCidade { get; set; }
+        
+        public int IdEstado { get; set; }
+
+        [ForeignKey("IdNacionalidade")]
+        public Nacionalidade nacionalidade { get; set; }
+
+        [ForeignKey("IdEstado")]
+        public Estado estado { get; set; }
+
+        [ForeignKey("IdCidade")]
+        public Cidade cidade { get; set; }
+
+        [EmailAddress]
         public string email { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+
+        [Phone]
         public string telefone { get; set; }
-        [Required(ErrorMessage = "Favor Preencher todos os campos")]
+        
         public string logradouro { get; set; }
 
     }
