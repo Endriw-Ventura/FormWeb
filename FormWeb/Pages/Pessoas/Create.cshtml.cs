@@ -48,7 +48,7 @@ namespace FormWeb.Pages.Pessoas
             Pessoa.estado = estado;
             Pessoa.IdEstado = estado.IdEstado;
             Pessoa.nacionalidade = pais;
-            Pessoa.IdNacionalidade = pais.IdPais; 
+            Pessoa.IdNacionalidade = pais.IdPais;
 
             _context.Pessoa.Add(Pessoa);
             await _context.SaveChangesAsync();
@@ -106,6 +106,7 @@ namespace FormWeb.Pages.Pessoas
         {
             List<SelectListItem> listaView = new List<SelectListItem>();
             List<Cidade> listaCidades = _context.Cidade.OrderBy(e => e.Name).ToList();
+
             foreach (Cidade cidade in listaCidades.Where(c => c.IdEstadoCidade == idEstado))
             {
 

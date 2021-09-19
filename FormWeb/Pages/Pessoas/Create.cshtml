@@ -14,52 +14,52 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Pessoa.nome" class="control-label">Nome</label>
-                <input asp-for="Pessoa.nome" class="form-control" />
+                <input asp-for="Pessoa.nome" class="form-control" required />
                 <span asp-validation-for="Pessoa.nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.sobrenome" class="control-label">Sobrenome</label>
-                <input asp-for="Pessoa.sobrenome" class="form-control" />
+                <input asp-for="Pessoa.sobrenome" class="form-control" required/>
                 <span asp-validation-for="Pessoa.sobrenome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cpf" class="control-label">CPF</label>
-                <input asp-for="Pessoa.cpf" class="form-control" />
+                <input id="CPF" asp-for="Pessoa.cpf" placeholder="Ex.: xxx.xxx.xxx-xx" maxlength="15" required class="form-control" />
                 <span asp-validation-for="Pessoa.cpf" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.telefone" class="control-label">Telefone</label>
-                <input asp-for="Pessoa.telefone" class="form-control" />
+                <input id="TEL" asp-for="Pessoa.telefone" placeholder="Ex.: (xx)xxxxx-xxxx" maxlength="14" required class="form-control" />
                 <span asp-validation-for="Pessoa.telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.email" class="control-label">Email</label>
-                <input asp-for="Pessoa.email" class="form-control" />
+                <input asp-for="Pessoa.email" placeholder="Ex.: xxxxx@xxxx.com.br" class="form-control" required />
                 <span asp-validation-for="Pessoa.email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cep" class="control-label">CEP</label>
-                <input asp-for="Pessoa.cep" class="form-control" />
+                <input id="CEP" asp-for="Pessoa.cep" placeholder="Ex.: xxxxx-xxx" maxlength="9" required class="form-control" />
                 <span asp-validation-for="Pessoa.cep" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.nacionalidade" class="control-label">Nacionalidade</label>
-                <select asp-for="Pessoa.nacionalidade" class="form-control" asp-items="Model.ListaPaises()" name="listaNacionalidades"></select>
+                <select asp-for="Pessoa.nacionalidade" class="form-control" required asp-items="Model.ListaPaises()" name="listaNacionalidades"></select>
                 <span asp-validation-for="Pessoa.nacionalidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.estado" class="control-label">Estado</label>
-                <select id="listaEstado" asp-for="Pessoa.estado" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
+                <select id="listaEstado" asp-for="Pessoa.estado" class="form-control" required asp-items="Model.ListaEstados()" name="listaEstados"></select>
                 <span asp-validation-for="Pessoa.estado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cidade" class="control-label">Cidade</label>
-                <select id="listaCidade" asp-for="Pessoa.cidade" class="form-control" name="listaCidades"></select>
+                <select id="listaCidade" asp-for="Pessoa.cidade" class="form-control" required name="listaCidades"></select>
                 <span asp-validation-for="Pessoa.cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.logradouro" class="control-label">Logradouro</label>
-                <input asp-for="Pessoa.logradouro" class="form-control" />
+                <input asp-for="Pessoa.logradouro" required class="form-control" />
                 <span asp-validation-for="Pessoa.logradouro" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -82,16 +82,30 @@
         function listarCidades() {
             idEstado = $("#listaEstado option:selected").val();
             $("#listaCidade").empty();
-            $("#listaCidade").append("<option value=''></option>");
             $.getJSON(`?handler=Cidades&idEstado=${idEstado}`, (data) => {
                 $.each(data, function (i, item) {
                     $("#listaCidade").append(`<option value="${item.value}">${item.text}</option>`);
                 });
             });
         }
-
+     
         $("#listaEstado").change(listarCidades);
+        //Não sabia se poderia usar Plugins, então montei de maneira manual.
+      
+        document.getElementById('CPF').addEventListener('input', function (e) {//regex para formatar o cpf ao digitar
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + (x[4] ? '-' + x[4] : '');
+        });
 
+        document.getElementById('CEP').addEventListener('input', function (e) {//regex para formatar o cep ao digitar
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,5})(\d{0,3})/);
+            e.target.value = !x[2] ? x[1] : x[1] + (x[2] ? '-' + x[2] : '');
+        });
+
+        document.getElementById('TEL').addEventListener('input', function (e) {//regex para formatar o telefone ao digitar
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? '(' + x[1] + ')' :'(' + x[1] + ')' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
     });
 
 </script>

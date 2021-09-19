@@ -11,14 +11,15 @@ namespace FormWeb.Models
     {
         [Key]
         public int idPessoa { get; set; }
-        
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string nome { get; set; }
-    
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string sobrenome { get; set; }
-        [DisplayFormat]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string cpf { get; set; }
-        [DisplayFormat]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string cep { get; set; }
+        
         public int IdNacionalidade { get; set; }
         
         public int IdCidade { get; set; }
@@ -34,12 +35,14 @@ namespace FormWeb.Models
         [ForeignKey("IdCidade")]
         public Cidade cidade { get; set; }
 
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Digite um email válido")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string email { get; set; }
 
         [Phone]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string telefone { get; set; }
-        
+        [Required(ErrorMessage = "Campo obrigatório")]
         public string logradouro { get; set; }
 
     }
