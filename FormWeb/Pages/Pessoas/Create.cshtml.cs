@@ -26,7 +26,7 @@ namespace FormWeb.Pages.Pessoas
 
         [BindProperty]
         public Pessoa Pessoa { get; set; }
-
+         
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
@@ -84,20 +84,6 @@ namespace FormWeb.Pages.Pessoas
             return listaView;
         }
 
-        public IEnumerable<SelectListItem> ListaCidades()
-        {
-
-            List<SelectListItem> listaView = new List<SelectListItem>();
-            List<Cidade> listaCidades = _context.Cidade.OrderBy(e => e.Name).ToList();
-            foreach (Cidade cidade in listaCidades)
-            {
-
-                listaView.Add(new SelectListItem() { Text = cidade.Name, Value = cidade.IdCidade.ToString() });
-
-            }
-            return listaView;
-        }
-
         public Estado ReturnEstado(int id)
         {
             Estado estado = _context.Estado.Find(id);
@@ -114,6 +100,20 @@ namespace FormWeb.Pages.Pessoas
         {
             Cidade cidade = _context.Cidade.Find(id);
             return cidade;
+        }
+
+        public JsonResult OnGetCidades(int idEstado)
+        {
+            List<SelectListItem> listaView = new List<SelectListItem>();
+            List<Cidade> listaCidades = _context.Cidade.OrderBy(e => e.Name).ToList();
+            foreach (Cidade cidade in listaCidades.Where(c => c.IdEstadoCidade == idEstado))
+            {
+
+                listaView.Add(new SelectListItem() { Text = cidade.Name, Value = cidade.IdCidade.ToString() });
+
+            }
+
+            return new JsonResult(listaView);
         }
     }
 }

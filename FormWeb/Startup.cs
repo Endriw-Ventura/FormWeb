@@ -27,6 +27,8 @@ namespace FormWeb
         {
             services.AddRazorPages();
 
+            services.AddControllers();
+
             services.AddDbContext<FormWebContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("FormWebContext")));
         }

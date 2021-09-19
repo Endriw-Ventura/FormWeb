@@ -20,7 +20,7 @@
                 @Html.DisplayName("Sobrenome")
             </th>
             <th>
-                @Html.DisplayName("CPF")
+                @Html.DisplayName("Email")
             </th>
             <th></th>
         </tr>
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.sobrenome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cpf)
+                @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.idPessoa">Editar</a> |

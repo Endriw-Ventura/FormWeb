@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model FormWeb.Pages.Pessoas.CreateModel
 
 @{
@@ -50,12 +50,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.estado" class="control-label">Estado</label>
-                <select asp-for="Pessoa.estado" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
+                <select id="listaEstado" asp-for="Pessoa.estado" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
                 <span asp-validation-for="Pessoa.estado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cidade" class="control-label">Cidade</label>
-                <select asp-for="Pessoa.cidade" class="form-control" asp-items="Model.ListaCidades()" name="listaCidades"></select>
+                <select id="listaCidade" asp-for="Pessoa.cidade" class="form-control" name="listaCidades"></select>
                 <span asp-validation-for="Pessoa.cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -73,7 +73,30 @@
 <div>
     <a asp-page="Index"> Voltar para a lista </a>
 </div> 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        var idEstado = 0;
+        listarCidades();
+
+        function listarCidades() {
+            idEstado = $("#listaEstado option:selected").val();
+            $("#listaCidade").empty();
+            $("#listaCidade").append("<option value=''></option>");
+            $.getJSON(`?handler=Cidades&idEstado=${idEstado}`, (data) => {
+                $.each(data, function (i, item) {
+                    $("#listaCidade").append(`<option value="${item.value}">${item.text}</option>`);
+                });
+            });
+        }
+
+        $("#listaEstado").change(listarCidades);
+
+    });
+
+</script>
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
