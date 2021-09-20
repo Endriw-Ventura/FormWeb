@@ -50,6 +50,13 @@ namespace FormWeb.Pages.Pessoas
             Pessoa.nacionalidade = pais;
             Pessoa.IdNacionalidade = pais.IdPais;
 
+            bool duplicate = _context.Pessoa.Any(d => d.cpf == Pessoa.cpf); //checa se o cpf já existe no banco
+            
+            if (duplicate)
+            {
+                ViewData["CpfDuplicado"] = "Já existe um cadastro com este CPF."; 
+                return Page();
+            }
             _context.Pessoa.Add(Pessoa);
             await _context.SaveChangesAsync();
 
