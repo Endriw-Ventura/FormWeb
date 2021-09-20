@@ -16,52 +16,52 @@
             <input type="hidden" asp-for="Pessoa.idPessoa" />
             <div class="form-group">
                 <label asp-for="Pessoa.nome" class="control-label">Nome</label>
-                <input asp-for="Pessoa.nome" class="form-control" />
+                <input asp-for="Pessoa.nome"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.sobrenome" class="control-label">Sobrenome</label>
-                <input asp-for="Pessoa.sobrenome" class="form-control" />
+                <input asp-for="Pessoa.sobrenome"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.sobrenome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cpf" class="control-label">CPF</label>
-                <input id="CPF" asp-for="Pessoa.cpf" class="form-control" />
+                <input id="CPF" asp-for="Pessoa.cpf"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.cpf" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.telefone" class="control-label">Telefone</label>
-                <input id="TEL" asp-for="Pessoa.telefone" class="form-control" />
+                <input id="TEL" asp-for="Pessoa.telefone"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.email" class="control-label">Email</label>
-                <input asp-for="Pessoa.email" class="form-control" />
+                <input asp-for="Pessoa.email"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cep" class="control-label">CEP</label>
-                <input id="CEP" asp-for="Pessoa.cep" class="form-control" />
+                <input id="CEP" asp-for="Pessoa.cep"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.cep" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.nacionalidade" class="control-label">Nacionalidade</label>
-                <select asp-for="Pessoa.nacionalidade" class="form-control" asp-items="Model.ListaPaises()" name="listaNacionalidades"></select>
+                <select asp-for="Pessoa.nacionalidade"  style="border-radius:1rem" class="form-control" asp-items="Model.ListaPaises()" name="listaNacionalidades"></select>
                 <span asp-validation-for="Pessoa.nacionalidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.estado" class="control-label">Estado</label>
-                <select id="listaEstado" asp-for="Pessoa.estado" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
+                <select id="listaEstado" asp-for="Pessoa.estado"  style="border-radius:1rem" class="form-control" asp-items="Model.ListaEstados()" name="listaEstados"></select>
                 <span asp-validation-for="Pessoa.estado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.cidade" class="control-label">Cidade</label>
-                <select id="listaCidade" asp-for="Pessoa.cidade" class="form-control" name="listaCidades"></select>
+                <select id="listaCidade" asp-for="Pessoa.cidade"  style="border-radius:1rem" class="form-control" name="listaCidades"></select>
                 <span asp-validation-for="Pessoa.cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pessoa.logradouro" class="control-label">Logradouro</label>
-                <input asp-for="Pessoa.logradouro" class="form-control" />
+                <input asp-for="Pessoa.logradouro"  style="border-radius:1rem" class="form-control" />
                 <span asp-validation-for="Pessoa.logradouro" class="text-danger"></span>
             </div>
             <div class="form-group">
